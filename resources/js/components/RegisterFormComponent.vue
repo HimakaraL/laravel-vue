@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import axios1 from '../axios';
+import axios from '../axios';
 
 export default {
     name: 'RegForm',
@@ -75,7 +75,7 @@ export default {
     methods: {
         async register() {
             try {
-                const response = await axios1.post('/register', this.form);
+                const response = await axios.post('/register', this.form);
                 alert(response.data.message);
                 this.$router.push('/login'); //frontend?
             } catch (error) {
