@@ -3,8 +3,8 @@
         <div class="d-flex justify-content-between align-items-center mb-5 header-container">
             <h1 class="header-title">Laravel + Vue with Sanctum Authentication WebApp</h1>
             <div class="button-group">
-                <button type="submit" class="btn btn-success">LOGIN</button>
-                <button type="submit" class="btn btn-warning">SIGNUP</button>
+                <button type="submit" class="btn btn-success" @click="$router.push('/login')">LOGIN</button>
+                <button type="submit" class="btn btn-warning" @click="$router.push('/register')">SIGNUP</button>
             </div>
         </div>
         <div class="d-flex justify-content-center align-items-center">
@@ -44,7 +44,7 @@ export default {
 }
 
 .centered-image {
-    max-width: 100%;
+    max-width: 30%;
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

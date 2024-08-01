@@ -55,10 +55,8 @@
 
 <script>
 export default {
-    mounted() {
-        console.log('Component Mounted');
-    }
-}
+    name: 'RegForm',
+};
 </script>
 
 <style scoped>

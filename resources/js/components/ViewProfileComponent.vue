@@ -44,9 +44,7 @@
 
 <script>
 export default {
-    mounted() {
-        console.log('Component Mounted')
-    }
+    name: 'ViewProfile',
 }
 </script>
 

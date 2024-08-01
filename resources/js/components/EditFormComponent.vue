@@ -45,9 +45,7 @@
 
 <script>
 export default {
-    mounted() {
-        console.log('Component Mounted');
-    }
+    name: 'EditForm',
 }
 </script>
 
