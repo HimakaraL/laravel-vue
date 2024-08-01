@@ -7,43 +7,45 @@
                         <h3>Register</h3>
                     </div>
                     <div class="card-body">
+                        <!-- @submit.prevent="register" -->
                         <form>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                    <label for="first_name">First Name</label>
+                                    <input v-model="form.first_name" type="text" class="form-control" id="first_name"
+                                        placeholder="First Name" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                    <label for="last_name">Last Name</label>
+                                    <input v-model="form.last_name" type="text" class="form-control" id="last_name"
+                                        placeholder="Last Name" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
+                                    <input v-model="form.email" type="email" class="form-control" id="email"
+                                        placeholder="Email" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <input v-model="password" type="password" class="form-control" id="password"
+                                        placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="status">Status</label>
-                                    <select id="status" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>Married</option>
-                                        <option>Single</option>
-                                    </select>
+                                    <input v-model="form.status" type="text" class="form-control" id="status" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="telephone">Telephone</label>
-                                    <input type="text" class="form-control" id="telephone" placeholder="Telephone">
+                                    <label for="phone_no">Telephone</label>
+                                    <input v-model="phone_no" type="text" class="form-control" id="phone_no"
+                                        placeholder="Telephone" required>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
                             </div>
                         </form>
                     </div>
@@ -54,8 +56,34 @@
 </template>
 
 <script>
+import axios1 from '../axios';
+
 export default {
     name: 'RegForm',
+    data() {
+        return {
+            form: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+                status: '',
+                phone_no: '',
+            }
+        };
+    },
+    methods: {
+        async register() {
+            try {
+                const response = await axios1.post('/register', this.form);
+                alert(response.data.message);
+                this.$router.push('/login');
+            } catch (error) {
+                console.error(error);
+                alert('Registration failed. Please check your inputs.');
+            }
+        }
+    }
 };
 </script>
 
@@ -103,7 +131,7 @@ export default {
     text-align: center;
 }
 
-.row{
+.row {
     margin-bottom: 2%;
 }
 </style>
