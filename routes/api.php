@@ -22,3 +22,8 @@ Route::group([
     
     Route::post("logout",[ApiController::class,"logout"]);
 });
+
+// Catch-all route for Vue Router
+Route::get('/{any}', function () {
+    return view('welcome'); 
+})->where('any', '.*');

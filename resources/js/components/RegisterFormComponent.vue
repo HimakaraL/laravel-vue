@@ -77,7 +77,7 @@ export default {
             try {
                 const response = await axios1.post('/register', this.form);
                 alert(response.data.message);
-                this.$router.push('/login');
+                this.$router.push('/login'); //frontend?
             } catch (error) {
                 console.error(error);
                 alert('Registration failed. Please check your inputs.');

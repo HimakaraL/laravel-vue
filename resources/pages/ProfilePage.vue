@@ -34,7 +34,7 @@
   export default {
     data() {
       return {
-        activeTab: 'view', // default active tab
+        activeTab: 'view',
       };
     },
     name: 'ProfilePage',
@@ -47,16 +47,10 @@
         this.activeTab = tab;
       },
       handleLogout() {
-        if (confirm("Are you sure you want to log out?")) {
-          // Implement logout logic here
-          alert("Logged out successfully.");
-        }
+      
       },
       handleDeleteProfile() {
-        if (confirm("Are you sure you want to delete your profile? This action cannot be undone.")) {
-          // Implement delete profile logic here
-          alert("Profile deleted successfully.");
-        }
+      
       },
     },
   };
