@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="password">Password</label>
-                                    <input v-model="password" type="password" class="form-control" id="password"
+                                    <input v-model="form.password" type="password" class="form-control" id="password"
                                         placeholder="Password" required>
                                 </div>
                             </div>
@@ -40,12 +40,12 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="phone_no">Telephone</label>
-                                    <input v-model="phone_no" type="text" class="form-control" id="phone_no"
+                                    <input v-model="form.phone_no" type="text" class="form-control" id="phone_no"
                                         placeholder="Telephone" required>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                <button type="button" @click="register()" class="btn btn-primary btn-block">Register</button>
                             </div>
                         </form>
                     </div>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import axios from '../axios';
+import axios from "axios";
 
 export default {
     name: 'RegForm',
@@ -72,19 +72,23 @@ export default {
             }
         };
     },
+    
     methods: {
         async register() {
             try {
-                const response = await axios.post('/register', this.form);
+                const response = await axios.post('http://127.0.0.1:8000/api/register', this.form);
                 alert(response.data.message);
-                this.$router.push('/login'); //frontend?
+                this.$router.push('/login'); 
             } catch (error) {
+                console.log(this.form);
                 console.error(error);
                 alert('Registration failed. Please check your inputs.');
             }
-        }
+        },
     }
 };
+
+
 </script>
 
 <style scoped>

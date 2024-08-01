@@ -10,14 +10,14 @@
                         <form>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input v-model="form.email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input v-model="form.password" type="password" class="form-control" id="password" placeholder="Password" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                <button type="button" @click="login()" class="btn btn-primary btn-block">Login</button>
                             </div>
                         </form>
                     </div>
@@ -28,8 +28,32 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'LoginForm',
+
+    data(){
+        return {
+            form: {
+                email: '',
+                password: ''
+            }
+        };
+    },
+
+    methods: {
+        async login() {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/login', this.form);
+                alert(response.data.message);
+                this.$router.push('/profile'); 
+            } catch (error) {
+                console.error(error);
+                alert('Login failed. Incorrect credentials');
+            }
+        },
+    }
 };
 </script>
 
