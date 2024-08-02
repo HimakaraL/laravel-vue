@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import EditForm from '../js/components/EditFormComponent.vue';
 import ViewProfile from '../js/components/ViewProfileComponent.vue';
 
@@ -35,6 +36,7 @@ export default {
   data() {
     return {
       activeTab: 'view',
+      'token': ''
     };
   },
   name: 'ProfilePage',
@@ -42,15 +44,46 @@ export default {
     EditForm,
     ViewProfile,
   },
+  created() {
+    this.token = localStorage.getItem('token');
+    if(!this.token){
+      console.log('Token not found');
+      this.$router.push('/login');
+    }
+  },
   methods: {
     setActiveTab(tab) {
       this.activeTab = tab;
     },
-    handleLogout() {
-
+    async handleLogout() {
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/api/logout', {}, {
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${this.token}`
+          },
+        });
+        localStorage.removeItem('token');
+        alert('Logout successful!');
+        this.$router.push('/login');
+      } catch (error) {
+        console.log(error);
+      }
     },
-    handleDeleteProfile() {
-
+    async handleDeleteProfile() {
+      try {
+        const response = await axios.delete('http://127.0.0.1:8000/api/deleteProfile', {
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${this.token}`
+          },
+        });
+        localStorage.removeItem('token');
+        alert('User deleted successfully!');
+        this.$router.push('/login');
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
@@ -61,4 +94,7 @@ export default {
   font-weight: bold;
 }
 
+.nav-item:hover {
+  cursor: pointer;
+}
 </style>
