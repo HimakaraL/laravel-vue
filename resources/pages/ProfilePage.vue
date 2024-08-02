@@ -2,20 +2,24 @@
   <div class="container mt-5">
     <header>
       <h1 class="mb-4">Profile</h1>
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" :class="{ active: activeTab === 'edit' }" @click="setActiveTab('edit')">Edit Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" :class="{ active: activeTab === 'view' }" @click="setActiveTab('view')">View Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="handleLogout">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" @click="handleDeleteProfile">Delete Profile</a>
-        </li>
-      </ul>
+      <div class="d-flex navigation">
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" :class="{ active: activeTab === 'edit' }" @click="setActiveTab('edit')">Edit
+                Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" :class="{ active: activeTab === 'view' }" @click="setActiveTab('view')">View
+                Profile</a>
+            </li>
+          </ul>
+        </div>
+        <div class="ml-auto">
+          <button type="button" @click="handleLogout" class="btn btn-info mr-3">Logout</button>
+          <button type="button" @click="handleDeleteProfile" class="btn btn-danger">Delete profile</button>
+        </div>
+      </div>
     </header>
 
     <div v-if="activeTab === 'edit'">
@@ -46,7 +50,7 @@ export default {
   },
   created() {
     this.token = localStorage.getItem('token');
-    if(!this.token){
+    if (!this.token) {
       console.log('Token not found');
       this.$router.push('/login');
     }
@@ -96,5 +100,9 @@ export default {
 
 .nav-item:hover {
   cursor: pointer;
+}
+
+.navigation {
+  gap: 1%;
 }
 </style>
