@@ -45,8 +45,11 @@ export default {
     methods: {
         async login() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/login', this.form);
-                alert(response.data.message);
+                const response = await axios.post('http://127.0.0.1:8000/api/login', this.form).then((response) => {
+                    localStorage.setItem('token', response.data.token)
+                    alert(response.data.message);
+                    // console.log(response.data.token);
+                })
                 this.$router.push('/profile'); 
             } catch (error) {
                 console.error(error);

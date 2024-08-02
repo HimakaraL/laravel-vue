@@ -102,6 +102,7 @@ class ApiController extends Controller
                 'message'=> $th->getMessage(),
             ],500);
         }
+
     }
 
     public function profile(){

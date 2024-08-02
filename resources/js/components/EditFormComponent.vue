@@ -7,35 +7,36 @@
                         <h3>Edit Profile</h3>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <div v-if="userProfile">
+                            <form @submit.prevent="updateUser">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.first_name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.last_name">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="status">Status</label>
+                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.status">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="telephone">Telephone</label>
+                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.phone_no">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="status">Status</label>
-                                    <select id="status" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>Married</option>
-                                        <option>Single</option>
-                                    </select>
+                                <div class="text-center">
+                                    <button type="button" @click="updateUser()" class="btn btn-primary btn-block">Save</button>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="telephone">Telephone</label>
-                                    <input type="text" class="form-control" id="telephone" placeholder="Telephone">
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        <div v-else>
+                            <h2>Loading....</h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,8 +45,59 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'EditForm',
+    data() {
+        return {
+            token: '',
+            userProfile: null
+        }
+    },
+
+    methods: {
+        async getUser() {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/profile', {
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: `Bearer ${this.token}`
+                    }
+                });
+                this.userProfile = response.data.data;
+                console.log(this.userProfile);
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        async updateUser() {
+            try {
+                const response = await axios.put('http://127.0.0.1:8000/api/editProfile', this.userProfile, {
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: `Bearer ${this.token}`
+                    }
+                });
+                alert("Profile updated successfully");
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    },
+
+    mounted() {
+        this.token = localStorage.getItem('token');
+        console.log(this.token);
+        if (this.token) {
+            this.getUser();
+            // this.updateUser();
+        } else {
+            console.log("Token not found");
+        };
+    }
 }
 </script>
 
@@ -93,7 +145,7 @@ export default {
     text-align: center;
 }
 
-.row{
+.row {
     margin-bottom: 2%;
 }
 </style>

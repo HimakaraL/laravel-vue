@@ -2,39 +2,42 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card justify-content-center">
                     <div class="card-header text-center">
                         <h3>Profile</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" v-if="userProfile">
                         <form>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">First Name</label>
-                                    <p class="form-control-static" id="firstName">John</p>
+                                    <p class="form-control-static" id="firstName">{{ userProfile.first_name }}</p>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="lastName">Last Name</label>
-                                    <p class="form-control-static" id="lastName">Doe</p>
+                                    <p class="form-control-static" id="lastName">{{ userProfile.last_name }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Email</label>
-                                    <p class="form-control-static" id="email">john.doe@example.com</p>
+                                    <p class="form-control-static" id="email">{{ userProfile.email }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="status">Status</label>
-                                    <p class="form-control-static" id="status">Single</p>
+                                    <p class="form-control-static" id="status">{{ userProfile.status }}</p>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="telephone">Telephone</label>
-                                    <p class="form-control-static" id="telephone">+1234567890</p>
+                                    <p class="form-control-static" id="telephone">{{ userProfile.phone_no }}</p>
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div v-else>
+                        <h2>Loading.....</h2>
                     </div>
                 </div>
             </div>
@@ -45,8 +48,43 @@
 <script>
 import axios from 'axios';
 
+
+
 export default {
     name: 'ViewProfile',
+    data() {
+        return {
+            'token': '',
+            'userProfile': null
+        };
+    },
+
+    methods: {
+        async getUser() {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/profile', {
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: `Bearer ${this.token}`
+                    }
+                });
+                this.userProfile = response.data.data;
+                console.log(this.userProfile);
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    },
+
+    mounted() {
+        this.token = localStorage.getItem('token');
+        console.log(this.token);
+        if(this.token) {
+            this.getUser();
+        } else {
+            console.log("Token not found");
+        };
+    }
 }
 </script>
 
