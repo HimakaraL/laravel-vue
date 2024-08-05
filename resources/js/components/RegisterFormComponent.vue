@@ -107,6 +107,8 @@ export default {
 }
 
 .btn-primary {
+    margin-top: 3%;
+    margin-bottom: 3%;
     background-color: #007bff;
     border-color: #007bff;
 }

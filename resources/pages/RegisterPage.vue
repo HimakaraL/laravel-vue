@@ -1,8 +1,8 @@
 <template>
     <div class="container mt-5">
+        <router-link to="/" class="btn btn-primary mb-3">HOME</router-link>
         <div class="d-flex flex-column justify-content-center align-items-center">
             <div class="header-group d-flex flex-column justify-content-center align-items-center mb-4">
-                <router-link to="/" class="btn btn-primary mb-3">HOME</router-link>
                 <h1 class="text-center">Sign up!</h1>
             </div>
             <div class="mb-4 w-100 d-flex justify-content-center">

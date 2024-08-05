@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5">       
-        <div class="d-flex justify-content-between align-items-center mb-5 header-container">
+        <div class="d-flex flex-md-row flex-column justify-content-between align-items-center mb-5 header-container">
             <h1 class="header-title">Laravel + Vue with Sanctum Authentication WebApp</h1>
             <div class="button-group">
                 <router-link to="/login" class="btn btn-success">LOGIN</router-link>
@@ -44,11 +44,16 @@ export default {
 }
 
 img {
+    max-width: 100%;
     height: auto;
 }
 
 .btn {
     border-radius: 15%;
+}
+
+.d-flex.flex-column .button-group{
+    margin-top: 10px;
 }
 
 </style>

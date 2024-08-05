@@ -2,12 +2,15 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <div class="mb-3" v-if="userProfile">
+                    <h1>Hello {{ userProfile.first_name }}!</h1>
+                </div>
                 <div class="card justify-content-center">
                     <div class="card-header text-center">
                         <h3>Profile</h3>
                     </div>
-                    <div class="card-body" v-if="userProfile">
-                        <form>
+                    <div class="card-body text-center">
+                        <form v-if="userProfile">
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="firstName">First Name</label>
@@ -35,9 +38,9 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div v-else>
-                        <h2>Loading.....</h2>
+                        <div v-else>
+                            <h2>Loading.....</h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,7 +82,7 @@ export default {
     mounted() {
         this.token = localStorage.getItem('token');
         console.log(this.token);
-        if(this.token) {
+        if (this.token) {
             this.getUser();
         } else {
             console.log("Token not found");

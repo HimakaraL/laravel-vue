@@ -6,34 +6,36 @@
                     <div class="card-header text-center">
                         <h3>Edit Profile</h3>
                     </div>
-                    <div class="card-body">
-                        <div v-if="userProfile">
-                            <form @submit.prevent="updateUser">
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="firstName">First Name</label>
-                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.first_name">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="lastName">Last Name</label>
-                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.last_name">
-                                    </div>
+                    <div class="card-body text-center">
+                        <form @submit.prevent="updateUser" v-if="userProfile">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="telephone"
+                                        v-model="userProfile.first_name">
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="status">Status</label>
-                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.status">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="telephone">Telephone</label>
-                                        <input type="text" class="form-control" id="telephone" v-model="userProfile.phone_no">
-                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" id="telephone"
+                                        v-model="userProfile.last_name">
                                 </div>
-                                <div class="text-center">
-                                    <button type="button" @click="updateUser()" class="btn btn-primary btn-block">Save</button>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="status">Status</label>
+                                    <input type="text" class="form-control" id="telephone" v-model="userProfile.status">
                                 </div>
-                            </form>
-                        </div>
+                                <div class="form-group col-md-6">
+                                    <label for="telephone">Telephone</label>
+                                    <input type="text" class="form-control" id="telephone"
+                                        v-model="userProfile.phone_no">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" @click="updateUser()"
+                                    class="btn btn-primary btn-block">Save</button>
+                            </div>
+                        </form>
                         <div v-else>
                             <h2>Loading....</h2>
                         </div>
@@ -117,6 +119,8 @@ export default {
 }
 
 .btn-primary {
+    margin-top: 3%;
+    margin-bottom: 3%;
     background-color: #007bff;
     border-color: #007bff;
 }
