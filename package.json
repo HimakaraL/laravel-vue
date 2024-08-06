@@ -17,6 +17,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "vue-router": "^4.4.0"
+        "vue-router": "^4.4.0",
+        "vue-toastification": "^2.0.0-rc.5"
     }
 }

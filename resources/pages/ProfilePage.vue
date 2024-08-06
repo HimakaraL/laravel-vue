@@ -35,6 +35,9 @@
 import axios from 'axios';
 import EditForm from '../js/components/EditFormComponent.vue';
 import ViewProfile from '../js/components/ViewProfileComponent.vue';
+import { useToast, POSITION } from 'vue-toastification';
+
+const toast = useToast();
 
 export default {
   data() {
@@ -68,7 +71,12 @@ export default {
           },
         });
         localStorage.removeItem('token');
-        alert('Logout successful!');
+        toast.warning('Log out successful!', {
+          timeout: 2000,
+          icon: false,
+          position: POSITION.TOP_RIGHT,
+          closeButton: false
+        })
         this.$router.push('/login');
       } catch (error) {
         console.log(error);
@@ -83,7 +91,12 @@ export default {
           },
         });
         localStorage.removeItem('token');
-        alert('User deleted successfully!');
+        toast.error('User deleted successfully!', {
+            timeout: 2000,
+            position: POSITION.TOP_RIGHT,
+            closeButton: false,
+            icon: false
+        });
         this.$router.push('/login');
       } catch (error) {
         console.log(error);

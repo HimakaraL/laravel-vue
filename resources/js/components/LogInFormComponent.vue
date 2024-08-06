@@ -29,6 +29,9 @@
 
 <script>
 import axios from 'axios';
+import { POSITION, useToast } from 'vue-toastification';
+
+const toast = useToast();
 
 export default {
     name: 'LoginForm',
@@ -49,9 +52,20 @@ export default {
                     localStorage.setItem('token', response.data.token);
                 })
                 this.$router.push('/profile'); 
+                toast.success('Login successful!', {
+                    timeout: 4000,
+                    position: POSITION.TOP_RIGHT,
+                    icon: false,
+                    closeButton: false
+                })
             } catch (error) {
                 console.error(error);
-                alert('Login failed. Incorrect credentials');
+                toast.error('Login failed. Incorrect credentials', {
+                    timeout: 4000,
+                    position: POSITION.TOP_RIGHT,
+                    icon: false,
+                    closeButton: false
+                })
             }
         },
     }

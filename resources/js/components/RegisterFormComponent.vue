@@ -45,7 +45,8 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="button" @click="register()" class="btn btn-primary btn-block">Register</button>
+                                <button type="button" @click="register()"
+                                    class="btn btn-primary btn-block">Register</button>
                             </div>
                         </form>
                     </div>
@@ -57,6 +58,9 @@
 
 <script>
 import axios from "axios";
+import { useToast, POSITION } from "vue-toastification";
+
+const toast = useToast();
 
 export default {
     name: 'RegForm',
@@ -72,17 +76,27 @@ export default {
             }
         };
     },
-    
+
     methods: {
         async register() {
             try {
                 const response = await axios.post('http://127.0.0.1:8000/api/register', this.form);
-                alert(response.data.message);
-                this.$router.push('/login'); 
+                toast.success('Sign up successful1', {
+                    timeout: 4000,
+                    icon: false,
+                    position: POSITION.TOP_RIGHT,
+                    closeButton: false
+                })
+                this.$router.push('/login');
             } catch (error) {
                 console.log(this.form);
                 console.error(error);
-                alert('Registration failed. Please check your inputs.');
+                toast.error('Registration failed. Please check your inputs.', {
+                    timeout: 4000,
+                    icon: false,
+                    position: POSITION.TOP_RIGHT,
+                    closeButton: false
+                });
             }
         },
     }

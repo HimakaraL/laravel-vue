@@ -48,6 +48,8 @@
 
 <script>
 import axios from 'axios';
+import { POSITION, useToast } from 'vue-toastification';
+
 
 export default {
     name: 'EditForm',
@@ -82,7 +84,13 @@ export default {
                         Authorization: `Bearer ${this.token}`
                     }
                 });
-                alert("Profile updated successfully");
+                const toast = useToast();
+                toast.info('User updated successfully!', {
+                    timeout: 4000,
+                    icon: false,
+                    position: POSITION.TOP_RIGHT,
+                    closeButton: false
+                });
                 console.log(response);
             } catch (error) {
                 console.log(error);
@@ -95,7 +103,6 @@ export default {
         console.log(this.token);
         if (this.token) {
             this.getUser();
-            // this.updateUser();
         } else {
             console.log("Token not found");
         };
