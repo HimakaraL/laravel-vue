@@ -81,7 +81,7 @@ export default {
         async register() {
             try {
                 const response = await axios.post('http://127.0.0.1:8000/api/register', this.form);
-                toast.success('Sign up successful1', {
+                toast.success('Sign up successfull', {
                     timeout: 4000,
                     icon: false,
                     position: POSITION.TOP_RIGHT,
