@@ -1,16 +1,23 @@
 <template>
-    <div class="container mt-5">       
-        <div class="d-flex flex-md-row flex-column justify-content-between align-items-center mb-5 header-container">
-            <h1 class="header-title">Laravel + Vue with Sanctum Authentication WebApp</h1>
+        <div class="container1 d-flex justify-content-between p-4 ">
+            <h1 class="header-title">EPIT</h1>
             <div class="button-group">
-                <router-link to="/login" class="btn btn-success">LOGIN</router-link>
-                <router-link to="/register" class="btn btn-dark">SIGNUP</router-link>
+                <router-link to="/login" class="btn">Login</router-link>
+                <router-link to="/register" class="btn">Signup</router-link>
             </div>
         </div>
-        <div class="d-flex align-items-center justify-content-center">
-            <img src="../images/Untitled design (1).png" alt="banner">
+        <div class="container2 d-flex justify-content-between p-4">
+            <div class="p-5 fw-bold">
+                <h1 class="logHead">Log in to access your account</h1>
+            </div>
+            <div class="imgClass">
+                <img src="../images/pair-programming-concept-illustration.png" alt="homeImg"/>
+            </div>
+            <div>
+
+            </div>
+            
         </div>
-    </div>
 </template>
 
 <script>
@@ -22,16 +29,9 @@ export default {
 </script>
 
 <style scoped>
-.header-container {
-    background: linear-gradient(to right, #ecf40fd5, #efcd53);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .header-title {
-    color: #000000;
-    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    font-family: Helvetica, sans-serif;
     font-size: 2rem;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -39,21 +39,53 @@ export default {
 }
 
 .button-group {
-    display: flex; 
-    gap: 5%; 
-}
-
-img {
-    max-width: 100%;
-    height: auto;
+    display: flex;
+    gap: 5%;
 }
 
 .btn {
-    border-radius: 15%;
+    color: #ffffff;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.1rem;
 }
 
-.d-flex.flex-column .button-group{
-    margin-top: 10px;
+.btn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #363636;
+    transition: 0.4s;
 }
 
+.container1 {
+    background-color: #000000;
+}
+
+.container2 {
+    background-color: rgb(235, 231, 231);
+}
+
+img{
+    max-width: 75%;
+    height: auto;
+}
+
+.imgClass{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.headerP {
+    font-family: Helvetica, sans-serif;
+}
+
+.logHead {
+    font-size: 4rem;
+}
+
+@media (max-width: 900px){
+    .container2{
+        flex-direction: column;
+    }
+}
 </style>

@@ -1,17 +1,9 @@
 <template>
-    <div class="container mt-5">
-        <router-link to="/" class="btn btn-primary mb-3">HOME</router-link>
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <div class="header-group d-flex flex-column justify-content-center align-items-center mb-4">
-                <h1 class="text-center">Sign up!</h1>
-            </div>
-            <div class="mb-4 w-100 d-flex justify-content-center">
-                <RegForm />
-            </div>
-            <div class="reg-link text-center mt-3">
-                <router-link to="/login" class="text-link">Login here</router-link>
-            </div>
-        </div>
+    <div class="container1 d-flex justify-content-between p-4 ">
+        <h1 class="header-title">EPIT</h1>
+    </div>
+    <div class="container2">
+        <RegForm />
     </div>
 </template>
 
@@ -27,34 +19,16 @@ export default {
 </script>
 
 <style scoped>
-.header-group {
-    text-align: center;
+.container1 {
+    background-color: #000000;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3; 
-}
-
-.text-link {
-    color: #007bff; 
-    text-decoration: none;
-}
-
-.text-link:hover {
-    text-decoration: underline;
-}
-
-.reg-link {
-    margin-top: 20px;
+.header-title {
+    color: #ffffff;
+    font-family: Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 0;
 }
 </style>
