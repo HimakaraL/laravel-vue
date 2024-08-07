@@ -88,7 +88,7 @@ export default {
                 toast.info('User updated successfully!', {
                     timeout: 4000,
                     icon: false,
-                    position: POSITION.TOP_RIGHT,
+                    position: POSITION.BOTTOM_LEFT,
                     closeButton: false
                 });
                 console.log(response);

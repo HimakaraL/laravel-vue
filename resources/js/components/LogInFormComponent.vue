@@ -54,7 +54,7 @@ export default {
                 this.$router.push('/profile'); 
                 toast.success('Login successful!', {
                     timeout: 4000,
-                    position: POSITION.TOP_RIGHT,
+                    position: POSITION.BOTTOM_LEFT,
                     icon: false,
                     closeButton: false
                 })
@@ -62,7 +62,7 @@ export default {
                 console.error(error);
                 toast.error('Login failed. Incorrect credentials', {
                     timeout: 4000,
-                    position: POSITION.TOP_RIGHT,
+                    position: POSITION.BOTTOM_LEFT,
                     icon: false,
                     closeButton: false
                 })

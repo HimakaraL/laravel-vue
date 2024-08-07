@@ -131,7 +131,7 @@ export default {
                     toast.error('Registration failed. Please check your inputs.', {
                         timeout: 4000,
                         icon: false,
-                        position: POSITION.TOP_RIGHT,
+                        position: POSITION.BOTTOM_LEFT,
                         closeButton: false
                     });
                 }
@@ -139,7 +139,7 @@ export default {
                 toast.error('Please check your inputs.', {
                     timeout: 4000,
                     icon: false,
-                    position: POSITION.TOP_RIGHT,
+                    position: POSITION.BOTTOM_LEFT,
                     closeButton: false
                 });
             }

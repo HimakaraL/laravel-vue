@@ -74,7 +74,7 @@ export default {
         toast.warning('Log out successful!', {
           timeout: 2000,
           icon: false,
-          position: POSITION.TOP_RIGHT,
+          position: POSITION.BOTTOM_LEFT,
           closeButton: false
         })
         this.$router.push('/login');
@@ -93,7 +93,7 @@ export default {
         localStorage.removeItem('token');
         toast.error('User deleted successfully!', {
             timeout: 2000,
-            position: POSITION.TOP_RIGHT,
+            position: POSITION.BOTTOM_LEFT,
             closeButton: false,
             icon: false
         });
