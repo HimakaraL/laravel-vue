@@ -79,7 +79,7 @@ export default {
           position: POSITION.BOTTOM_LEFT,
           closeButton: false,
         });
-        this.$router.push('/login');
+        this.$router.push('/');
       } catch (error) {
         console.log(error);
       }
