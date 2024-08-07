@@ -87,9 +87,21 @@ export default {
 
     async handleDelete(){
       try {
-        
+        const response = await axios.delete('http://127.0.0.1:8000/api/deleteProfile', {
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${this.token}`,
+          },
+        });
+        localStorage.removeItem('token');
+        toast.warning('Profile deletion successful!', {
+          timeout: 2000,
+          position: POSITION.BOTTOM_LEFT,
+          closeButton: false,
+        });
+        this.$router.push('/');
       } catch (error) {
-        
+        console.log(error);
       }
     }
   },

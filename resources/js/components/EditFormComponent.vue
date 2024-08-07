@@ -6,14 +6,17 @@
                     <div class="form-items">
                         <form class="requires-validation" @submit.prevent="updateUser" v-if="userProfile">
                             <div class="form-group mb-3">
+                                <label>First Name</label>
                                 <input class="form-control" v-model="userProfile.first_name" type="text" id="first_name"
                                     placeholder="First Name">
                             </div>
                             <div class="form-group mb-3">
+                                <label>Last Name</label>
                                 <input class="form-control" v-model="userProfile.last_name" type="text" id="last_name"
                                     placeholder="Last Name">
                             </div>
                             <div class="form-group mb-3">
+                                <label>Status</label>
                                 <select class="form-select" v-model="userProfile.status" id="status">
                                     <option selected disabled value="">Status</option>
                                     <option value="Married">Married</option>
@@ -21,6 +24,7 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
+                                <label>Telephone</label>
                                 <input class="form-control" v-model="userProfile.phone_no" type="text" id="phone_no"
                                     placeholder="Phone Number">
                                 <p class="errorPara" v-if="phoneNumberError">Input must be a number with 10 digits</p>
