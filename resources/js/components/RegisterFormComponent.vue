@@ -31,8 +31,8 @@
                             <div class="form-group mb-3">
                                 <select class="form-select" v-model="form.status" id="status" required>
                                     <option selected disabled value="">Status</option>
-                                    <option value="jweb">Married</option>
-                                    <option value="sweb">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Single">Single</option>
                                 </select>
                                 <p class="errorPara" v-if="statusEmpty">Please select your status</p>
                             </div>
