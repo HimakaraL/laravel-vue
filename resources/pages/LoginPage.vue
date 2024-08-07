@@ -1,16 +1,16 @@
 <template>
-    <div class="container mt-5">
-        <router-link to="/" class="btn btn-primary mb-3">Home</router-link>
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <div class="header-group d-flex flex-row justify-content-center align-items-center mb-4">
-                <h1 class="text-center">Login to Continue!</h1>
-            </div>
-            <div class="mb-4 w-100 d-flex justify-content-center">
-                <LoginForm />
-            </div>
-            <div class="reg-link text-center mt-3">
-                <router-link to="/register" class="text-link">Not a member? Register here</router-link>
-            </div>
+    <div class="container1 d-flex justify-content-between p-4 ">
+        <h1 class="header-title">EPIT</h1>
+    </div>
+    <div class="container2">
+        <div class="mt-4 d-flex justify-content-center">
+            <h1>Log in to continue</h1>
+        </div>
+        <div class="d-flex justify-content-center">
+            <img src="../images/access-control-system-abstract-concept.png">
+        </div>
+        <div class="pt-0">
+            <LoginForm/>
         </div>
     </div>
 </template>
@@ -27,34 +27,36 @@ export default {
 </script>
 
 <style scoped>
-.header-group {
-    text-align: center;
+.container1 {
+    background-color: #000000;
 }
 
-.btn-primary {
-    background-color: #007bff; 
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+.header-title {
+    color: #ffffff;
+    font-family: Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 0;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3; 
+h1{
+    font-family: Helvetica, sans-serif;
+    font-size: 3rem;
 }
 
-.text-link {
-    color: #007bff;
-    text-decoration: none;
+img {
+    max-width: 20%;
+    height: auto;
 }
 
-.text-link:hover {
-    text-decoration: underline;
-}
+@media (max-width: 500px){
+    img{
+        width: 35%;
+    }
 
-.reg-link {
-    margin-top: 20px;
+    h1{
+        font-size: 2rem;
+    }
 }
 </style>
