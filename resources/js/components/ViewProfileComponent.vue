@@ -52,6 +52,7 @@ export default {
     },
 
     methods: {
+        //get profile info
         async getUser() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/profile', {

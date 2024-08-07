@@ -2,7 +2,7 @@
   <div class="container1 d-flex justify-content-between p-4 ">
     <h1 class="header-title">EPIT</h1>
     <div class="button-group">
-      <button class="btn" type="button" @click="handleLogout()">Logout</button>
+      <button class="btn" type="button" @click="handleLogout()">Logout</button>  
       <button class="btn" type="button" @click="handleDelete()" >Delete</button>
     </div>
   </div>
@@ -50,10 +50,13 @@ export default {
       token: '',
     };
   },
+
   components: {
     EditForm,
     ViewProfile,
   },
+
+  //begining
   created() {
     this.token = localStorage.getItem('token');
     if (!this.token) {
@@ -61,10 +64,14 @@ export default {
       this.$router.push('/login');
     }
   },
+
   methods: {
+    //swap tabs
     setActiveTab(tab) {
       this.activeTab = tab;
     },
+
+    //logout function
     async handleLogout() {
       try {
         const response = await axios.post('http://127.0.0.1:8000/api/logout', {}, {
@@ -85,6 +92,7 @@ export default {
       }
     },
 
+    //delete profile function
     async handleDelete(){
       try {
         const response = await axios.delete('http://127.0.0.1:8000/api/deleteProfile', {

@@ -45,7 +45,7 @@
 
 <script>
 import axios from 'axios';
-import { POSITION, useToast } from 'vue-toastification';
+import { POSITION, useToast } from 'vue-toastification'; 
 
 export default {
     name: 'EditForm',
@@ -56,11 +56,15 @@ export default {
             phoneNumberError: false
         };
     },
+
     methods: {
+        //validate phone number
         validatePhn() {
             this.phoneNumberError = isNaN(this.userProfile.phone_no) || this.userProfile.phone_no.length !== 10;
             return !this.phoneNumberError;
         },
+
+        //get the user information on the form
         async getUser() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/profile', {
@@ -75,6 +79,8 @@ export default {
                 console.error(error);
             }
         },
+
+        //update user
         async updateUser() {
             const isValid = this.validatePhn();
             const toast = useToast();
@@ -107,6 +113,7 @@ export default {
             }
         }
     },
+    
     mounted() {
         this.token = localStorage.getItem('token');
         console.log(this.token);

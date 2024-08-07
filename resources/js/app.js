@@ -10,8 +10,8 @@ import 'vue-toastification/dist/index.css';
 
 const app = createApp(App);
 
-app.use(router);
-app.use(Toast, {
+app.use(router); //use Router
+app.use(Toast, {  //use Toast
     position: POSITION.TOP_RIGHT,
     timeout: 5000,
     hideProgressBar: false,

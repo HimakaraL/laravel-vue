@@ -53,6 +53,8 @@ export default {
     },
 
     methods: {
+
+        //Validate input fields
         validateForm(){
             this.emailEmpty = this.form.email === '';
             this.passwordEmpty = this.form.password === '';
@@ -67,6 +69,7 @@ export default {
             )
         },
 
+        //login function
         async login() {
             const isValid = this.validateForm();
             if(isValid){

@@ -86,6 +86,8 @@ export default {
     },
 
     methods: {
+
+        //validate form
         validateForm() {
             this.firstNameEmpty = this.form.first_name === '';
             this.LastNameEmpty = this.form.last_name === '';
@@ -111,7 +113,7 @@ export default {
             );
         },
 
-
+        //register function
         async register() {
             const isValid = this.validateForm();
 
