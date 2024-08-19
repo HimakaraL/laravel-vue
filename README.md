@@ -1,6 +1,6 @@
 Laravel + Vue Web application with authentication using Sanctum
-'npm i' then
-Use 'php artisan serve' and 'npm run dev' To start the application
+`npm i` then
+Use `php artisan serve` and `npm run dev` To start the application
 Used vue-toastification for toast messages
 
 <img width="909" alt="Capture1" src="https://github.com/user-attachments/assets/04bd0b0d-6f6e-4cfd-bfa7-0cdc3a490ac5">
